@@ -11,7 +11,7 @@ Fraction::Fraction(int numerator, int denominator) : numerator(numerator), denom
 Fraction::Fraction(const Fraction& fraction) : numerator(fraction.numerator), denominator(fraction.denominator) {}
 Fraction::Fraction(int number) : numerator(number), denominator(1) {}
 Fraction::Fraction(double number) : numerator(static_cast<int>(number * 10)), denominator(10) {}
-Fraction::Fraction() {}
+Fraction::Fraction() : numerator(0), denominator(1) {}
 
 // Getters and Setters
 int Fraction::get_numerator() const {

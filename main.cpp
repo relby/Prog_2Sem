@@ -10,9 +10,9 @@ int main() {
     Complex<long long> c3(7, -3);
     Complex<Fraction> c4(3.9, -9.9);
     Fraction asdfasdf(3);
-
-    auto c5 = c1.add(c2).multiply(c3).subtract(c2).add(c1).subtract(c4);
-    auto c6 = (c1 + c2) * c3 - c2 + c1 - c4;
+    cout << c4[Real] << ' ' << c4[Imag] << '\n';
+    auto c5 = c1.add(c2).multiply(c3).subtract(c2).add(c1).divide(c4);
+    auto c6 = ((c1 + c2) * c3 - c2 + c1) / c4;
     assert(c5 == c6);
     c5.print();
     c6.print();
