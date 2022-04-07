@@ -42,16 +42,25 @@ public:
     }
     
     //Math
-    double length() {
+    double length() const {
         T sum = T();
         for (size_t i = 0; i < size; i++) {
             sum += array[i] * array[i];
-            std::cout << sum << '\n';
         }
         return std::sqrt((double)sum);
     }
-    int angle() {
-        //
+
+    T dot_product(const TVector<T>& vector) const {
+        assert(size == vector.size);
+        T sum = T();
+        for (size_t i = 0; i < size; i++) {
+            sum += array[i] * vector.array[i];
+        }
+        return sum;
+    }
+
+    double angle(const TVector<T>& vector) const {
+        return this->dot_product(vector) / (this->length() * vector.length());
     }
     TVector<T> operator+(const TVector<T>& rhs) const {
         assert(size == rhs.size);
@@ -70,12 +79,7 @@ public:
         return out;
     }
     T operator*(const TVector<T>& rhs) const {
-        assert(size == rhs.size);
-        T sum = T();
-        for (size_t i = 0; i < size; i++) {
-            sum += array[i] * rhs.array[i];
-        }
-        return sum;
+        return this->dot_product(rhs);
     }
 
     bool operator==(const TVector<T>& rhs) const {
