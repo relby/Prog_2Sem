@@ -62,30 +62,36 @@ public:
     double angle(const TVector<T>& vector) const {
         return this->dot_product(vector) / (this->length() * vector.length());
     }
+
     TVector<T> operator+(const TVector<T>& rhs) const {
         assert(size == rhs.size);
-        T* out = new T[size];
+        T* a = new T[size];
         for (size_t i = 0; i < size; i++) {
-            out[i] = array[i] + rhs.array[i];
+            a[i] = array[i] + rhs.array[i];
         }
+        TVector<T> out(a, size);
+        delete[] a;
         return out;
     }
     TVector<T> operator-(const TVector<T>& rhs) const {
         assert(size == rhs.size);
-        T* out = new T[size];
+        T* a = new T[size];
         for (size_t i = 0; i < size; i++) {
-            out[i] = array[i] - rhs.array[i];
+            a[i] = array[i] - rhs.array[i];
         }
+        TVector<T> out(a, size);
+        delete[] a;
         return out;
     }
     TVector<T> operator*(T scale) const {
-        T* out = new T[size];
+        T* a = new T[size];
         for (size_t i = 0; i < size; i++) {
-            out[i] = array[i] * scale;
+            a[i] = array[i] * scale;
         }
+        TVector<T> out(a, size);
+        delete[] a;
         return out;
     }
-    
     T operator*(const TVector<T>& rhs) const {
         return this->dot_product(rhs);
     }
