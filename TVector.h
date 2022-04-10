@@ -78,6 +78,14 @@ public:
         }
         return out;
     }
+    TVector<T> operator*(T scale) const {
+        T* out = new T[size];
+        for (size_t i = 0; i < size; i++) {
+            out[i] = array[i] * scale;
+        }
+        return out;
+    }
+    
     T operator*(const TVector<T>& rhs) const {
         return this->dot_product(rhs);
     }
